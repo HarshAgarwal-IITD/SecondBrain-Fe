@@ -10,7 +10,7 @@ export default function useContent(){
            if(!localStorage.getItem('token')){
             return;
            }
-
+//@ts-ignore
           const response = axios.get(BACKEND_URL + '/api/v1/content', {
                 headers: {
                     authorization: localStorage.getItem('token')

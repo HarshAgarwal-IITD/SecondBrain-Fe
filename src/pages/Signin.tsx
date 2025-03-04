@@ -9,7 +9,9 @@ import BrainIcon from "../components/icons/brainIcon";
 
 export default function Signin(){
     const [loading,setLoading]=useState(false);
+    //@ts-ignore
     const usernameRef= useRef<HTMLInputElement>();
+    //@ts-ignore
     const passRef= useRef<HTMLInputElement>();
     const [msg,setmsg]=useState("");
     const navigate = useNavigate();

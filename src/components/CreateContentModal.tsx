@@ -12,7 +12,9 @@ enum Type{
 
 }
  export default function CreateContentModal({open,onClose}:{open:boolean ,onClose:()=>void}){
+    //@ts-ignore
     const titleRef = useRef<HTMLInputElement>();
+     //@ts-ignore
     const linkRef = useRef<HTMLInputElement>();
     const [type,setType]= useState<Type>();
     const [msg , setMsg] = useState();

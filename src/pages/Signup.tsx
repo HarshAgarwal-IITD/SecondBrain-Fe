@@ -7,8 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import BrainIcon from "../components/icons/brainIcon";
 export default function Signup(){
-    
+    //@ts-ignore
     const usernameRef= useRef<HTMLInputElement>();
+        //@ts-ignore
     const passRef= useRef<HTMLInputElement>();
     const [msg,setmsg]=useState("");
     const navigate = useNavigate();
