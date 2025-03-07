@@ -39,7 +39,7 @@ export default function Card({title,link,type,id}:cardTypes){
       };
 
     return <>
-    <div className="bg-white  p-4 m-3 rounded-md border border-slate-200 h-full min-h-100 min-w-80">
+    <div className="bg-white min-w-80 p-4 m-3 rounded-md border border-slate-200 h-full min-h-100 ">
         <div className="justify-between flex items-center">
             {type=="twitter"? <TwitterIcon/>:""}
             {type=="youtube"? <YoutubeIcon/>:""}

@@ -52,28 +52,36 @@ export default function Dashboard(){
   
   
    
-  return(<div className="flex gap-4  bg-gray-100 h-min-screen w-min-screen">
-      <Sidebar setSelector={setSelector} />
+  return(<div className="flex gap-4 overflow-x-clip  bg-gray-100 h-min-screen w-min-screen">
+      
   <div className="flex-4  bg-gray-100">
 
-    <div className=" flex justify-between ">
+    <div className=" flex justify-between gap-2 flex-wrap ">
+
     {open&& <CreateContentModal open={open} onClose={()=>setOpen(false)}/>}
-        <div className="flex align-middle text-center items-center">
+      
+        <div className="flex w-screen md:w-max align-middle items-center  justify-between">
+          <div className="flex">
+        <Sidebar setSelector={setSelector} />
        {!login &&<Button variant="primary"  onClick={()=>navigate('/signin')} text="Sign In" ></Button>}
        {login && <Button variant="primary" onClick={handleLogin} text="SignOut"></Button>
        
          }
-         {login &&  <div className="text-2xl font-bold text-indigo-800"> Hello {username}</div>}
+         </div>
+         {login &&  <div className="text-2xl  mr-1 font-bold text-indigo-800"> Hello {username}</div>}
       
+       
+
         </div>
-        <div className="flex ">
+       
+        <div className="flex md:justify-normal md:w-max w-screen m-1 justify-between ">
         
         <Button variant="primary" onClick={()=>{setOpen(true)}} text="Add Content" startIcon={<PlusIcon/>}></Button>
         <Button variant="secondary" text="Share Brain" onClick={shareBrain} startIcon={<ShareIcon/>}></Button>
         </div>
     </div>
     
-      <div className="flex flex-wrap">
+      <div className="flex md:justify-normal flex-wrap justify-center">
         
         {login&&  contents.map(({type,link,title,_id})=>
             ( (selector == "" || selector==type) ? <Card title={title} key={_id} link={link} type={type} id={_id} ></Card>:"")
