@@ -68,11 +68,12 @@ export default function Card({title,link,type,id,refreshContent}:cardTypes){
 
     return <>
     <div className="bg-white min-w-80 p-4 m-3 rounded-md border border-slate-200 h-full min-h-100 ">
-        <div className="justify-between flex items-center hover:cursor-pointer hover:underline" onClick={() => { window.open(link, '_blank')  }} >
+        <div className="justify-between flex items-center hover:cursor-pointer hover:underline"  >
             {type=="twitter"? <TwitterIcon />:""}
             {type=="youtube"? <YoutubeIcon/>:""}
         
-             {title} 
+             <span onClick={() => { window.open(link, '_blank')  }}>{title} </span>
+             
              <div className="flex items-center  justify-between gap-2">
                
                 <button className="p-1 hover:bg-gray-100 rounded-full" onClick={copyToClipboard}>
