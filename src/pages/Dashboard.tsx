@@ -19,6 +19,7 @@ export default function Dashboard(){
   const [login,setLogin]=useState(false);
   const [selector,setSelector]=useState("");
   const [shareLink,setShareLink]=useState("")
+  const {contents,username,refresh}= useContent();
   async function shareBrain(){
     try{const response =await axios.post(BACKEND_URL+'/api/v1/brain/share',{
       share:true,
@@ -44,7 +45,7 @@ export default function Dashboard(){
     if(localStorage.getItem('token'))
       setLogin(true);
   })
-  const {contents,username}= useContent();
+
   function handleLogin(){
     localStorage.removeItem('token');
     setLogin(false);
@@ -52,13 +53,13 @@ export default function Dashboard(){
   
   
    
-  return(<div className="flex gap-4 overflow-x-clip  bg-gray-100 h-min-screen w-min-screen">
+  return(<div className="flex gap-4overflow-x-clip  bg-gray-100 h-min-screen w-min-screen">
       
-  <div className="flex-4  bg-gray-100">
+  <div className="flex-4 min-h-screen bg-gray-100">
 
     <div className=" flex justify-between gap-2 flex-wrap ">
 
-    {open&& <CreateContentModal open={open} onClose={()=>setOpen(false)}/>}
+    {open&& <CreateContentModal refreshContent={refresh} open={open} onClose={()=>setOpen(false)}/>}
       
         <div className="flex w-screen md:w-max align-middle items-center  justify-between">
           <div className="flex">
@@ -84,7 +85,7 @@ export default function Dashboard(){
       <div className="flex md:justify-normal flex-wrap justify-center">
         
         {login&&  contents.map(({type,link,title,_id})=>
-            ( (selector == "" || selector==type) ? <Card title={title} key={_id} link={link} type={type} id={_id} ></Card>:"")
+            ( (selector == "" || selector==type) ? <Card title={title} key={_id} refreshContent={refresh} link={link} type={type} id={_id} ></Card>:"")
         )}
         {login&& 
         contents.length===0 ?

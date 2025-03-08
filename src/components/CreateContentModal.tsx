@@ -1,9 +1,10 @@
  import CrossIcon from "./icons/CrossIcon";
  import Button from "./Button";
  import Input from "./Input";
- import { useRef, useState } from "react";
+ import {  useRef, useState } from "react";
 import { BACKEND_URL } from "../config";
 import axios from 'axios'
+
 enum Type{
     Youtube='youtube',
     Twitter = 'twitter',
@@ -11,7 +12,8 @@ enum Type{
    
 
 }
- export default function CreateContentModal({open,onClose}:{open:boolean ,onClose:()=>void}){
+ export default function CreateContentModal({open,onClose,refreshContent}:{open:boolean ,onClose:()=>void,refreshContent:()=>void}){
+   
     //@ts-ignore
     const titleRef = useRef<HTMLInputElement>();
      //@ts-ignore
@@ -31,7 +33,10 @@ enum Type{
             }
         })
         setMsg(response.data.msg);
-        onClose();
+        refreshContent();
+        setTimeout(() => {
+            onClose();
+        }, 200);
 
     }
     if(open)

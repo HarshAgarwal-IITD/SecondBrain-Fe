@@ -30,9 +30,9 @@ import TagIcon from "./icons/TagIcon";
 import TwitterIcon from "./icons/TwitterIcon";
 import YoutubeIcon from "./icons/YoutubeIcon";
 import BrainIcon from "./icons/brainIcon";
-//@ts-ignore
+
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-//@ts-ignore
+
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { useState } from "react";
