@@ -5,7 +5,7 @@ import DeleteIcon from "./icons/DeleteIcon"
 import axios from "axios"
 import { BACKEND_URL } from "../config"
 import { useEffect,useState } from "react"
-import { useNavigate } from "react-router-dom"
+
 import {
   Dialog,
   DialogContent,
@@ -33,7 +33,7 @@ interface cardTypes{
 
 export default function Card({title,link,type,id,refreshContent}:cardTypes){
   const [embedLink, setEmbedLink] = useState(link); // State to store the modified link
-  const navigate = useNavigate();
+
 
   useEffect(() => {
       if (type === "youtube") {
